@@ -6,7 +6,7 @@ ENV LC_ALL C.UTF-8
 ENV ROS_DISTRO melodic
 ENV TINI_VERSION v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
-ADD image /
+#ADD image /
 
 
 RUN apt-get update \
