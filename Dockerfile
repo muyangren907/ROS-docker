@@ -55,7 +55,7 @@ ENV ROS_DISTRO melodic
 RUN apt-get update && apt-get install -y \
     ros-melodic-desktop-full \
     && apt-get install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential \
-    && apt install python-rosdep
+    && apt install python-rosdep \
     #              A
     #              +--- full desktop \
     && rm -rf /var/lib/apt/lists/*
