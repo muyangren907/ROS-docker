@@ -34,7 +34,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
     && echo "deb http://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/ `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list \
-
     && apt-get update && apt-get install --no-install-recommends -y \
     python-rosinstall \
     python-vcstools \
@@ -42,7 +41,6 @@ RUN apt-get update \
 	python-wstool \
 	build-essential \
     && rm -rf /var/lib/apt/lists/* \
-
     && apt-get update && apt-get install -y \
     ros-melodic-desktop-full \
     && rm -rf /var/lib/apt/lists/* \
