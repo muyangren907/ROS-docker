@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20200713
+FROM ubuntu:17.10
 
 ENV DEBIAN_FRONTEND noninteractive
 
