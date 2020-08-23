@@ -1,95 +1,52 @@
-FROM ubuntu:bionic-20200713
+# This is an auto generated Dockerfile for ros:ros-core
+# generated from docker_images/create_ros_core_image.Dockerfile.em
+FROM ubuntu:bionic-20200807
+LABEL author="muyangren907"
 
-ENV DEBIAN_FRONTEND noninteractive
+USER root
+# setup timezone
+RUN echo 'Asia/Shanghai' > /etc/timezone && \
+    ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    apt-get update && \
+    apt-get install -q -y --no-install-recommends tzdata && \
+    apt-get install sudo wget && \
+    useradd ros -m && \
+    echo ros:ros | chpasswd && \
+    adduser ros sudo && \
+    wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true && \
+    rm -rf /var/lib/apt/lists/*
 
-# built-in packages
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends software-properties-common curl \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends --allow-unauthenticated \
-        supervisor \
-        openssh-server pwgen sudo vim-tiny \
-        net-tools \
-        lxde x11vnc xvfb \
-        gtk2-engines-murrine ttf-ubuntu-font-family \
-        firefox \
-        nginx \
-        python-pip python-dev build-essential \
-        mesa-utils libgl1-mesa-dri \
-        gnome-themes-standard gtk2-engines-pixbuf gtk2-engines-murrine pinta \
-        dbus-x11 x11-utils \
-        terminator \
-    && apt-get autoclean \
-    && apt-get autoremove \
-    && rm -rf /var/lib/apt/lists/*
-
-# =================================
 # install packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -q -y --no-install-recommends \
     dirmngr \
     gnupg2 \
     && rm -rf /var/lib/apt/lists/*
 
 # setup keys
-RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
 # setup sources.list
-RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list
-
-# install bootstrap tools
-RUN apt-get update && apt-get install --no-install-recommends -y \
-    python-rosinstall \
-    python-vcstools \
-	python-rosinstall-generator \
-	python-wstool \
-	build-essential \
-    && rm -rf /var/lib/apt/lists/*
+RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
 
 # setup environment
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
+ENV ROS_DISTRO melodic
 
 # install ros packages
-ENV ROS_DISTRO melodic
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full \
-    && apt-get install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential \
-    && apt install python-rosdep \
-    #              A
-    #              +--- full desktop \
     && rm -rf /var/lib/apt/lists/*
-
-# bootstrap rosdep
-RUN rosdep init \
-    && rosdep update
 
 # setup entrypoint
-# COPY ./ros_entrypoint.sh /
+COPY ./ros_entrypoint.sh /
+
+ENTRYPOINT ["/ros_entrypoint.sh"]
 
 
-# =================================
+USER ros
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
-# user tools
-RUN apt-get update && apt-get install -y \
-    terminator \
-    gedit \
-    okular \
-    && rm -rf /var/lib/apt/lists/*
-
-# tini for subreap
-ENV TINI_VERSION v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
-RUN chmod +x /bin/tini
-
-ADD image /
-RUN pip install setuptools wheel && pip install -r /usr/lib/web/requirements.txt
-
-RUN cp /usr/share/applications/terminator.desktop /root/Desktop
-RUN echo "source /opt/ros/melodic/setup.bash" >> /root/.bashrc
-
-EXPOSE 80
-WORKDIR /root
-ENV HOME=/home/ubuntu \
-    SHELL=/bin/bash
-ENTRYPOINT ["/startup.sh"]
+WORKDIR /home/ros
+CMD ["zsh"]
