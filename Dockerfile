@@ -46,7 +46,7 @@ COPY ./ros_entrypoint.sh /
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
 
-
+USER ros
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && echo 'ros' | chsh -s /bin/zsh
