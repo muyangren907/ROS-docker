@@ -11,9 +11,6 @@ jobs:
   build_and_push_to_DockerHub:
     runs-on: ubuntu-latest
     steps:
-#     - uses: actions/checkout@v2
-#     - name: Build the Docker image
-#       run: docker build . --file Dockerfile --tag muyangren907/ros:melodic
     - name: Check out the repo
       uses: actions/checkout@v2
     - name: Push to Docker Hub
@@ -26,16 +23,91 @@ jobs:
   build_and_push_to_Aliyun_HK:
     runs-on: ubuntu-latest
     steps:
-#     - uses: actions/checkout@v2
-#     - name: Build the Docker image
-#       run: docker build . --file Dockerfile --tag muyangren907/ros:melodic
     - name: Check out the repo
       uses: actions/checkout@v2
-    - name: Push to Aliyun HK
+    - name: Push to Aliyun cn-hongkong
       uses: docker/build-push-action@v1
       with:
         registry: registry.cn-hongkong.aliyuncs.com
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: registry.cn-hongkong.aliyuncs.com/muyangren907/ros-hk
+        repository: muyangren907/ros
+        tags: melodic
+  build_and_push_to_Aliyun_Hangzhou:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Push to Aliyun cn-hangzhou
+      uses: docker/build-push-action@v1
+      with:
+        registry: registry.cn-hangzhou.aliyuncs.com
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: muyangren907/ros
+        tags: melodic
+  build_and_push_to_Aliyun_Shanghai:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Push to Aliyun cn-shanghai
+      uses: docker/build-push-action@v1
+      with:
+        registry: registry.cn-shanghai.aliyuncs.com
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: muyangren907/ros
+        tags: melodic
+  build_and_push_to_Aliyun_Beijing:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Push to Aliyun cn-beijing
+      uses: docker/build-push-action@v1
+      with:
+        registry: registry.cn-beijing.aliyuncs.com
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: muyangren907/ros
+        tags: melodic
+  build_and_push_to_Aliyun_Shenzhen:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Push to Aliyun cn-shenzhen
+      uses: docker/build-push-action@v1
+      with:
+        registry: registry.cn-shenzhen.aliyuncs.com
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: muyangren907/ros
+        tags: melodic
+  build_and_push_to_Aliyun_Chengdu:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Push to Aliyun cn-chengdu
+      uses: docker/build-push-action@v1
+      with:
+        registry: registry.cn-chengdu.aliyuncs.com
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: muyangren907/ros
+        tags: melodic
+  build_and_push_to_Aliyun_US_west1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Push to Aliyun us-west-1
+      uses: docker/build-push-action@v1
+      with:
+        registry: registry.us-west-1.aliyuncs.com
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: muyangren907/ros
         tags: melodic
