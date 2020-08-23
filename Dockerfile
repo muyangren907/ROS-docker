@@ -8,12 +8,14 @@ USER root
 RUN echo 'Asia/Shanghai' > /etc/timezone && \
     ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     apt-get update && \
-    apt-get install -q -y --no-install-recommends tzdata && \
-    apt-get install sudo wget && \
+    apt-get install -q -y --no-install-recommends tzdata sudo git zsh && \
+    apt-get install -q -y --no-install-recommends --reinstall ca-certificates && \
     useradd ros -m && \
     echo ros:ros | chpasswd && \
     adduser ros sudo && \
-    wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true && \
+    git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
+    && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
+    && chsh -s /bin/zsh && \
     rm -rf /var/lib/apt/lists/*
 
 # install packages
@@ -45,8 +47,9 @@ COPY ./ros_entrypoint.sh /
 ENTRYPOINT ["/ros_entrypoint.sh"]
 
 
-USER ros
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
+    && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
+    && echo 'ros' | chsh -s /bin/zsh
 
 WORKDIR /home/ros
 CMD ["zsh"]
