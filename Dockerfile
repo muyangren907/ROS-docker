@@ -1,5 +1,4 @@
-# This is an auto generated Dockerfile for ros:ros-core
-# generated from docker_images/create_ros_core_image.Dockerfile.em
+# This is a Dockerfile for muyangren907/ros:kinetic
 FROM ubuntu:xenial-20200807
 LABEL author="muyangren907"
 
@@ -13,7 +12,7 @@ RUN echo 'Asia/Shanghai' > /etc/timezone && \
     useradd ros -m && \
     echo ros:ros | chpasswd && \
     adduser ros sudo && \
-    git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
+    git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && chsh -s /bin/zsh && \
     rm -rf /var/lib/apt/lists/*
@@ -41,14 +40,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-kinetic-desktop-full \
     && rm -rf /var/lib/apt/lists/*
 
-# setup entrypoint
-COPY ./ros_entrypoint.sh /
-
+RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc \
+    && echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
 USER ros
-RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
-    && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-#     && echo 'ros' | chsh -s /bin/zsh
 
+RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
+    && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
+    && echo 'ros' | chsh -s /bin/zsh
+
+# setup workdir
 WORKDIR /home/ros
-ENTRYPOINT ["/ros_entrypoint.sh"]
+RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc \
+    && echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
+    
 CMD ["zsh"]
