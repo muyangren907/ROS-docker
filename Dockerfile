@@ -6,7 +6,7 @@ LABEL author="muyangren907"
 USER root
 # setup timezone
 RUN echo 'Asia/Shanghai' > /etc/timezone && \
-    ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     apt-get update && \
     apt-get install -q -y --no-install-recommends tzdata sudo git zsh && \
     apt-get install -q -y --no-install-recommends --reinstall ca-certificates && \
