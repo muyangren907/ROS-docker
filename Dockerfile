@@ -7,6 +7,7 @@ USER root
 # setup timezone
 RUN echo 'Asia/Shanghai' > /etc/timezone && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    ln -sf /bin/bash /bin/sh && \
     apt-get update && \
     apt-get install -q -y --no-install-recommends tzdata sudo git zsh nano && \
     apt-get install -q -y --no-install-recommends --reinstall ca-certificates && \
