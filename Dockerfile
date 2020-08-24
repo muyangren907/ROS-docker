@@ -54,5 +54,5 @@ RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
 COPY ./ros_entrypoint.sh /home/ros
 
 WORKDIR /home/ros
-ENTRYPOINT ["/ros_entrypoint.sh"]
+ENTRYPOINT ["~/ros_entrypoint.sh"]
 CMD ["zsh"]
