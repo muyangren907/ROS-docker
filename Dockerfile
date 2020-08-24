@@ -41,8 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full \
     && rm -rf /var/lib/apt/lists/*
 
-# setup entrypoint
-COPY ./ros_entrypoint.sh /
+
 
 # ENTRYPOINT ["/ros_entrypoint.sh"]
 
@@ -50,6 +49,9 @@ USER ros
 RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && echo 'ros' | chsh -s /bin/zsh
+
+# setup entrypoint
+COPY ./ros_entrypoint.sh /home/ros
 
 WORKDIR /home/ros
 ENTRYPOINT ["/ros_entrypoint.sh"]
