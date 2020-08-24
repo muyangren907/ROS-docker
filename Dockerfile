@@ -8,7 +8,7 @@ USER root
 RUN echo 'Asia/Shanghai' > /etc/timezone && \
     ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     apt-get update && \
-    apt-get install -q -y --no-install-recommends tzdata sudo git zsh && \
+    apt-get install -q -y --no-install-recommends tzdata sudo git zsh nano && \
     apt-get install -q -y --no-install-recommends --reinstall ca-certificates && \
     useradd ros -m && \
     echo ros:ros | chpasswd && \
@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY ./ros_entrypoint.sh /
 
 USER ros
-RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
+RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && echo 'ros' | chsh -s /bin/zsh
 
