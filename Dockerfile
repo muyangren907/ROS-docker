@@ -46,14 +46,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # ENTRYPOINT ["/ros_entrypoint.sh"]
 
 USER ros
-RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
-    && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
-    && echo 'ros' | chsh -s /bin/zsh
-
 # setup entrypoint
 COPY ./ros_entrypoint.sh /home/ros/
+RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
+    && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
+    && echo 'ros' | chsh -s /bin/zsh \
+    && echo 'ros' | sudo chmod 777 
+
+
 
 # setup workdir
 WORKDIR /home/ros
+
+
 ENTRYPOINT ["/home/ros/ros_entrypoint.sh"]
 CMD ["zsh"]
