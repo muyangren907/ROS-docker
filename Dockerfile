@@ -38,10 +38,12 @@ ENV ROS_DISTRO melodic
 # install ros packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full \
+    python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
-    && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc
+    && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc \
+    && rosdep init
 USER ros
 
 RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
@@ -51,7 +53,8 @@ RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
 # setup workdir
 WORKDIR /home/ros
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
-    && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc
+    && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc \
+    && rosdep update
 
 CMD ["zsh"]
 
