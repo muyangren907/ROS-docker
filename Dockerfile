@@ -7,7 +7,6 @@ USER root
 # setup timezone
 RUN echo 'Asia/Shanghai' > /etc/timezone && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-#     ln -sf /bin/bash /bin/sh && \
     apt-get update && \
     apt-get install -q -y --no-install-recommends tzdata sudo git zsh nano && \
     apt-get install -q -y --no-install-recommends --reinstall ca-certificates && \
@@ -43,19 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
-    && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc \
-#     && source ~/.zshrc \
-#     && rosdep init
-
-
-# # setup entrypoint
-# COPY ./ros_entrypoint.sh /home/ros/
-# RUN chmod 777 /home/ros/ros_entrypoint.sh \
-#     && chown ros:ros /home/ros/ros_entrypoint.sh
-
-
-# ENTRYPOINT ["/ros_entrypoint.sh"]
-
+    && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc
 USER ros
 
 RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
@@ -65,10 +52,7 @@ RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
 # setup workdir
 WORKDIR /home/ros
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
-    && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc \
-#     && source ~/.zshrc \
-#     && rosdep update
+    && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc
 
-# ENTRYPOINT ["/home/ros/ros_entrypoint.sh"]
 CMD ["zsh"]
 
