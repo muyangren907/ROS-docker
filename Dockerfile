@@ -43,6 +43,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
     && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc \
+    && source ~/.zshrc \
     && rosdep init
 
 
@@ -64,6 +65,7 @@ RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
 WORKDIR /home/ros
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
     && echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc \
+    && source ~/.zshrc \
     && rosdep update
 
 # ENTRYPOINT ["/home/ros/ros_entrypoint.sh"]
