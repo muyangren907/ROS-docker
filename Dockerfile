@@ -58,6 +58,6 @@ RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
 # setup workdir
 WORKDIR /home/ros
 
-
-ENTRYPOINT ["/home/ros/ros_entrypoint.sh"]
 CMD ["zsh"]
+ENTRYPOINT ["/home/ros/ros_entrypoint.sh"]
+
