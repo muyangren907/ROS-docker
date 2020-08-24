@@ -51,9 +51,9 @@ RUN git clone https://github.com/muyangren907/ohmyzsh.git ~/.oh-my-zsh \
     && echo 'ros' | chsh -s /bin/zsh
 
 # setup entrypoint
-COPY ./ros_entrypoint.sh /home/ros
+COPY ./ros_entrypoint.sh /home/ros/
 
 # setup workdir
 WORKDIR /home/ros
-ENTRYPOINT ["~/ros_entrypoint.sh"]
+ENTRYPOINT ["/home/ros/ros_entrypoint.sh"]
 CMD ["zsh"]
