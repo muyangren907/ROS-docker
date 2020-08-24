@@ -1,4 +1,4 @@
-# This is an auto generated Dockerfile for ros:ros-core
+# This is a Dockerfile for muyangren907/ros:melodic
 FROM ubuntu:bionic-20200807
 LABEL author="muyangren907"
 
