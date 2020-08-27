@@ -7,7 +7,8 @@ USER root
 RUN echo 'Asia/Shanghai' > /etc/timezone && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     apt-get update && \
-    apt-get install -q -y --no-install-recommends tzdata sudo git zsh nano gcc python python3 python-pip python3-pip && \
+    apt-get install -q -y --no-install-recommends tzdata sudo git zsh nano gcc \
+    python python3 python-pip python3-pip python-setuptools python3-setuptools && \
     apt-get install -q -y --no-install-recommends --reinstall ca-certificates && \
     useradd ros -m && \
     echo ros:ros | chpasswd && \
