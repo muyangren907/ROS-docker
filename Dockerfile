@@ -7,7 +7,7 @@ USER root
 RUN echo 'Asia/Shanghai' > /etc/timezone && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     apt-get update && \
-    apt-get install -q -y --no-install-recommends tzdata sudo git zsh nano gcc && \
+    apt-get install -q -y --no-install-recommends tzdata sudo git zsh nano gcc python python3 python-pip python3-pip && \
     apt-get install -q -y --no-install-recommends --reinstall ca-certificates && \
     useradd ros -m && \
     echo ros:ros | chpasswd && \
@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential \
     && apt-get install -q -y --no-install-recommends python-catkin-tools ros-melodic-serial ros-melodic-gps-common \
     ros-melodic-lanelet2 ros-melodic-velodyne ros-melodic-rosbridge-suite \
+    && pip3 install numpy sanic rospkg \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \

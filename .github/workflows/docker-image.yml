@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ melodic ]
+    branches: [ melodic-tourbus ]
   pull_request:
-    branches: [ melodic ]
+    branches: [ melodic-tourbus ]
 
 jobs:
 
@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_HK:
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +32,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Hangzhou:
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +45,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Shanghai:
     runs-on: ubuntu-latest
     steps:
@@ -58,7 +58,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Qingdao:
     runs-on: ubuntu-latest
     steps:
@@ -71,7 +71,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Beijing:
     runs-on: ubuntu-latest
     steps:
@@ -84,7 +84,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Zhangjiakou:
     runs-on: ubuntu-latest
     steps:
@@ -97,7 +97,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Huhehaote:
     runs-on: ubuntu-latest
     steps:
@@ -110,7 +110,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Shenzhen:
     runs-on: ubuntu-latest
     steps:
@@ -123,7 +123,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Chengdu:
     runs-on: ubuntu-latest
     steps:
@@ -136,7 +136,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Singapore:
     runs-on: ubuntu-latest
     steps:
@@ -149,7 +149,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Sydney:
     runs-on: ubuntu-latest
     steps:
@@ -162,7 +162,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_KualaLumpur:
     runs-on: ubuntu-latest
     steps:
@@ -175,7 +175,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Jakarta:
     runs-on: ubuntu-latest
     steps:
@@ -188,7 +188,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Tokyo:
     runs-on: ubuntu-latest
     steps:
@@ -201,7 +201,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Frankfurt:
     runs-on: ubuntu-latest
     steps:
@@ -214,7 +214,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_London:
     runs-on: ubuntu-latest
     steps:
@@ -227,7 +227,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_SiliconValley:
     runs-on: ubuntu-latest
     steps:
@@ -240,7 +240,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Virginia:
     runs-on: ubuntu-latest
     steps:
@@ -253,7 +253,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Mumbai:
     runs-on: ubuntu-latest
     steps:
@@ -266,7 +266,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
   build_and_push_to_Aliyun_Dubai:
     runs-on: ubuntu-latest
     steps:
@@ -279,4 +279,4 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: muyangren907/ros
-        tags: melodic
+        tags: melodic-tourbus
