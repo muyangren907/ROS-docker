@@ -39,6 +39,8 @@ ENV ROS_DISTRO melodic
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full \
     python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential \
+    && apt-get install -q -y --no-install-recommends python-catkin-tools ros-melodic-serial ros-melodic-gps-common \
+    ros-melodic-lanelet2 ros-melodic-velodyne ros-melodic-rosbridge-suite \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
