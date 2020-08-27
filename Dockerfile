@@ -1,4 +1,4 @@
-# This is a Dockerfile for muyangren907/ros:melodic
+# This is a Dockerfile for muyangren907/ros:melodic-tourbus
 FROM ubuntu:bionic-20200807
 LABEL author="muyangren907"
 
@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential \
     && apt-get install -q -y --no-install-recommends python-catkin-tools ros-melodic-serial ros-melodic-gps-common \
     ros-melodic-lanelet2 ros-melodic-velodyne ros-melodic-rosbridge-suite \
-    && pip3 install numpy sanic rospkg \
+    && pip3 install wheel numpy sanic rospkg \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
